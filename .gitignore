@@ -1,0 +1,5 @@
+pkg/
+src/
+python-encodec-*.tar.gz
+python-encodec-*.pkg.*
+python-encodec-git/
