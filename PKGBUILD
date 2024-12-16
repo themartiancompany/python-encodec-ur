@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=python-encodec-git
-pkgver=v0.1.1.r21.g0e2d0ae
+pkgver=0.1.1.r21.g0e2d0ae
 pkgrel=1
 pkgdesc="EnCodec: High Fidelity Neural Audio Compression by Facebook"
 arch=('any')
@@ -33,7 +33,7 @@ provides=('python-encodec')
 pkgver() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	set -o pipefail
-	git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || echo 0.0.1
+	git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' || echo 0.0.1
 }
 
 build() {
