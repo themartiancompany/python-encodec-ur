@@ -1,4 +1,4 @@
-# `python-encodec-git`
+# `python-encodec`
 
 universal recipe for [user repo](../themartiancompany/ur).
 
