@@ -35,11 +35,11 @@ depends=(
   "${_py}-einops"
 )
 makedepends=(
-  "${_py}'python-wheel"
-  "${_py}'python-hatchling"
-  "${_py}'python-build"
-  "${_py}'python-installer"
-  "${_py}'python-setuptools"
+  "${_py}-wheel"
+  "${_py}-hatchling"
+  "${_py}-build"
+  "${_py}-installer"
+  "${_py}-setuptools"
 )
 optdepends=(
 )
