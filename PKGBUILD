@@ -8,8 +8,9 @@
 _py="python"
 _pkg="encodec"
 _pkgname="${_py}-${_pkg}"
-pkgname="${_pkgname}-git"
+pkgname="${_pkgname}"
 pkgver=0.1.1.r21.g0e2d0ae
+_commit="0e2d0aed29362c8e8f52494baf3e6f99056b214f"
 pkgrel=1
 pkgdesc="EnCodec: High Fidelity Neural Audio Compression by Facebook"
 arch=(
@@ -20,13 +21,6 @@ _ns="facebookresearch"
 url="${_http}/${_ns}/${_pkg}"
 license=(
   'MIT'
-)
-_branch="main"
-source=(
-  "${pkgname}::git+${url}.git#branch=${_branch}"
-)
-md5sums=(
-  'SKIP'
 )
 depends=(
   "${_py}-numpy"
@@ -43,11 +37,14 @@ makedepends=(
 )
 optdepends=(
 )
-conflicts=(
-  "${_py}-encodec"
+_branch="main"
+_tag_name="commit"
+_tag="${_commit}"
+source=(
+  "${pkgname}::git+${url}.git#${_tag_name}=${_tag}"
 )
-provides=(
-  "${_py}-encodec=${pkgver}"
+md5sums=(
+  'SKIP'
 )
 
 pkgver() {
