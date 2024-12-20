@@ -23,6 +23,7 @@ license=(
   'MIT'
 )
 depends=(
+  "${_py}-soundfile"
   "${_py}-numpy"
   "${_py}-pytorch"
   "${_py}-torchaudio"
