@@ -51,7 +51,10 @@ pkgname="${_pkgname}"
 pkgver="0.1.1.r21.g0e2d0ae"
 _commit="0e2d0aed29362c8e8f52494baf3e6f99056b214f"
 pkgrel=1
-pkgdesc="EnCodec: High Fidelity Neural Audio Compression by Facebook"
+_pkgdesc=(
+  "EnCodec: High Fidelity"
+  "Neural Audio Compression by Facebook"
+)
 arch=(
   'any'
 )
