@@ -32,6 +32,9 @@
 #     <actionless dot loveless AT gmail MF com>
 
 # shellcheck disable=SC2034,SC2154
+if [[ ! -v "_git" ]]; then
+  _git="true"
+fi
 _py="python"
 _pyver="$( \
   "${_py}" \
@@ -75,13 +78,22 @@ makedepends=(
   "${_py}-installer"
   "${_py}-setuptools"
 )
+if [[ "${_git}" == "true" ]]; then
+  makedepends+=(
+    "git"
+  )
+fi
 optdepends=(
 )
 _branch="main"
 _tag_name="commit"
 _tag="${_commit}"
+_tarname="${_pkg}-${_tag}"
+if [[ "${_git}" == "true" ]]; then
+  _src="${_tarname}::git+${url}.git#${_tag_name}=${_tag}"
+fi
 source=(
-  "${pkgname}::git+${url}.git#${_tag_name}=${_tag}"
+  "${_src}"
 )
 md5sums=(
   'SKIP'
@@ -89,9 +101,7 @@ md5sums=(
 
 pkgver() {
   cd \
-    "${srcdir}/${pkgname}" || \
-    exit \
-      2
+    "${srcdir}/${_tarname}"
   set \
     -o \
     pipefail
@@ -107,9 +117,7 @@ pkgver() {
 
 build() {
   cd \
-    "${srcdir}/${pkgname}" || \
-  exit \
-    2
+    "${srcdir}/${_tarname}"
   "${_py}" \
     -m \
       build \
@@ -119,8 +127,7 @@ build() {
 
 package() {
   cd \
-    "${srcdir}/${pkgname}" || \
-  exit 2
+    "${srcdir}/${_tarname}"
   "${_py}" \
     -m \
       installer \
